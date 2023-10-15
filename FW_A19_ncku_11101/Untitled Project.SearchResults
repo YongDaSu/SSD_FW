@@ -1,0 +1,4 @@
+---- nand_init Matches (3 in 2 files) ----
+Main.c (bin\sys):48:extern bool boNAND_Init(int hostif);
+Main.c (bin\sys):96:	boNAND_Init(0);
+Nand_sys.h (include):30:extern UINT8 boNAND_Init(int hostif);

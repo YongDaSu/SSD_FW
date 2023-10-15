@@ -1,0 +1,152 @@
+> include/autocfg.h
+cd drive; make dep
+make[1]: Entering directory `/d/JM66x/Firmware/Sam662_120713/drive'
+make[1]: Nothing to be done for `dep'.
+make[1]: Leaving directory `/d/JM66x/Firmware/Sam662_120713/drive'
+cd bin; make dep
+make[1]: Entering directory `/d/JM66x/Firmware/Sam662_120713/bin'
+for x in rvct/Makefile; do cd `dirname $x`; make dep -f `basename $x`; cd /d/JM66x/Firmware/Sam662_120713/bin; done 
+make[2]: Entering directory `/d/JM66x/Firmware/Sam662_120713/bin/rvct'
+make[2]: Nothing to be done for `dep'.
+make[2]: Leaving directory `/d/JM66x/Firmware/Sam662_120713/bin/rvct'
+for x in  sys/Makefile; do cd `dirname $x`; make dep -f `basename $x`; cd /d/JM66x/Firmware/Sam662_120713/bin; done
+make[2]: Entering directory `/d/JM66x/Firmware/Sam662_120713/bin/sys'
+make[2]: Nothing to be done for `dep'.
+make[2]: Leaving directory `/d/JM66x/Firmware/Sam662_120713/bin/sys'
+make[1]: Leaving directory `/d/JM66x/Firmware/Sam662_120713/bin'
+> include/autocfg.h
+cd drive; make all
+make[1]: Entering directory `/d/JM66x/Firmware/Sam662_120713/drive'
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include  --bss_threshold=0 -c --littleend --cpu=ARM968E-S intc.c -o intc.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include  --bss_threshold=0 -c --littleend --cpu=ARM968E-S tmr.c -o tmr.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+"tmr.c", line 67: Warning:  #223-D: function "UARTprintf" declared implicitly
+        UARTprintf("inv clk\n");
+        ^
+"tmr.c", line 48: Warning:  #177-D: variable "nCLKSetting" was declared but never referenced
+  	register unsigned int nCLKSetting;
+  	                      ^
+tmr.c: 2 warnings, 0 errors
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include  --bss_threshold=0 -c --littleend --cpu=ARM968E-S uart.c -o uart.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include  --bss_threshold=0 -c --littleend --cpu=ARM968E-S gpio.c -o gpio.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+"gpio.c", line 327: Warning:  #177-D: variable "bCmd" was declared but never referenced
+  	byte bG781, bCmd;
+  	            ^
+"gpio.c", line 328: Warning:  #550-D: variable "vH" was set but never used
+  	byte vH,vH2;
+  	     ^
+"gpio.c", line 368: Warning:  #177-D: variable "bCmd" was declared but never referenced
+  	byte bAddr, bCmd;
+  	            ^
+gpio.c: 3 warnings, 0 errors
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include  --bss_threshold=0 -c --littleend --cpu=ARM968E-S ata.c -o ata.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+"ata.c", line 462: Warning:  #550-D: variable "bWakeUpPath" was set but never used
+  	byte bError, bWakeUpPath;
+  	             ^
+ata.c: 1 warning, 0 errors
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include  --bss_threshold=0 -c --littleend --cpu=ARM968E-S ataopt.c -o ataopt.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include  --bss_threshold=0 -c --littleend --cpu=ARM968E-S ataftl.c -o ataftl.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+"d:/JM66x/Firmware/Sam662_120713/include/ftl.h", line 50: Warning:  #47-D: incompatible redefinition of macro "COPY_BACK_ENABLE" (declared at line 266 of "d:/JM66x/Firmware/Sam662_120713/include/global.h")
+  #define			COPY_BACK_ENABLE		0
+         			^
+ataftl.c: 1 warning, 0 errors
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include  --bss_threshold=0 -c --littleend --cpu=ARM968E-S stack.c -o stack.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+"d:/JM66x/Firmware/Sam662_120713/include/ftl.h", line 50: Warning:  #47-D: incompatible redefinition of macro "COPY_BACK_ENABLE" (declared at line 266 of "d:/JM66x/Firmware/Sam662_120713/include/global.h")
+  #define			COPY_BACK_ENABLE		0
+         			^
+stack.c: 1 warning, 0 errors
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include  --bss_threshold=0 -c --littleend --cpu=ARM968E-S smart.c -o smart.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+"d:/JM66x/Firmware/Sam662_120713/include/ftl.h", line 50: Warning:  #47-D: incompatible redefinition of macro "COPY_BACK_ENABLE" (declared at line 266 of "d:/JM66x/Firmware/Sam662_120713/include/global.h")
+  #define			COPY_BACK_ENABLE		0
+         			^
+smart.c: 1 warning, 0 errors
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include  --bss_threshold=0 -c --littleend --cpu=ARM968E-S ipm.c -o ipm.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include  --bss_threshold=0 -c --littleend --cpu=ARM968E-S nand_sys.c -o nand_sys.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+"d:/JM66x/Firmware/Sam662_120713/include/ftl.h", line 50: Warning:  #47-D: incompatible redefinition of macro "COPY_BACK_ENABLE" (declared at line 266 of "d:/JM66x/Firmware/Sam662_120713/include/global.h")
+  #define			COPY_BACK_ENABLE		0
+         			^
+nand_sys.c: 1 warning, 0 errors
+armar --create /d/JM66x/Firmware/Sam662_120713/lib/driver.a intc.o tmr.o uart.o gpio.o sata.o ata.o ataopt.o ataftl.o stack.o smart.o ipm.o nand_sys.o
+make[1]: Leaving directory `/d/JM66x/Firmware/Sam662_120713/drive'
+cd bin; make all
+make[1]: Entering directory `/d/JM66x/Firmware/Sam662_120713/bin'
+for x in rvct/Makefile; do cd `dirname $x`; make all -f `basename $x`; cd /d/JM66x/Firmware/Sam662_120713/bin; done 
+make[2]: Entering directory `/d/JM66x/Firmware/Sam662_120713/bin/rvct'
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include  --bss_threshold=0 -c --littleend --cpu=ARM968E-S rvctISR.c -o rvctISR.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include  --bss_threshold=0 -c --littleend --cpu=ARM968E-S rvctRetarget.c -o rvctRetarget.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+"rvctRetarget.c", line 58: Warning: C3017W: <config.8> may be used before being set
+    struct __initial_stackheap config;
+                               ^
+"rvctRetarget.c", line 58: Warning: C3017W: <config.12> may be used before being set
+    struct __initial_stackheap config;
+                               ^
+rvctRetarget.c: 2 warnings, 0 errors
+armar --create /d/JM66x/Firmware/Sam662_120713/lib/rvct.a rvctHeap.o rvctISR.o rvctRetarget.o rvctStack.o
+make[2]: Leaving directory `/d/JM66x/Firmware/Sam662_120713/bin/rvct'
+for x in  sys/Makefile; do cd `dirname $x`; make all -f `basename $x`; cd /d/JM66x/Firmware/Sam662_120713/bin; done
+make[2]: Entering directory `/d/JM66x/Firmware/Sam662_120713/bin/sys'
+rm rvctVectors.*
+touch rvctVectors_source.s
+rm ver_sata.*
+rm main.o
+rm uart_cmd_channel.o
+armcc -DWITH_SATA_ID_TABLE -E rvctVectors_source.s > rvctVectors.s
+armcc -I/d/JM66x/Firmware/Sam662_120713/include -DINTERFACE_SATA -E ver.c > ver_sata.c
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include -DPROG_ROOT_PATH=\"/d/JM66x/Firmware/Sam662_120713\" -DUSER_NAME=\"fred_wei\" --bss_threshold=0 -c --littleend --cpu=ARM968E-S main.c -o main.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+"d:/JM66x/Firmware/Sam662_120713/include/ftl.h", line 50: Warning:  #47-D: incompatible redefinition of macro "COPY_BACK_ENABLE" (declared at line 266 of "d:/JM66x/Firmware/Sam662_120713/include/global.h")
+  #define			COPY_BACK_ENABLE		0
+         			^
+main.c: 1 warning, 0 errors
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include -DPROG_ROOT_PATH=\"/d/JM66x/Firmware/Sam662_120713\" -DUSER_NAME=\"fred_wei\" --bss_threshold=0 -c --littleend --cpu=ARM968E-S bget.c -o bget.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+armasm --apcs interwork -g --cpu=ARM968E-S rvctVectors.s -o rvctVectors.o 
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include -DPROG_ROOT_PATH=\"/d/JM66x/Firmware/Sam662_120713\" -DUSER_NAME=\"fred_wei\" --bss_threshold=0 -c --littleend --cpu=ARM968E-S rvctSubMain.c -o rvctSubMain.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include -DPROG_ROOT_PATH=\"/d/JM66x/Firmware/Sam662_120713\" -DUSER_NAME=\"fred_wei\" --bss_threshold=0 -c --littleend --cpu=ARM968E-S ver_sata.c -o ver_sata.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include -DPROG_ROOT_PATH=\"/d/JM66x/Firmware/Sam662_120713\" -DUSER_NAME=\"fred_wei\" --bss_threshold=0 -c --littleend --cpu=ARM968E-S ldr_block.c -o ldr_block.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include -DPROG_ROOT_PATH=\"/d/JM66x/Firmware/Sam662_120713\" -DUSER_NAME=\"fred_wei\" --bss_threshold=0 -c --littleend --cpu=ARM968E-S uart_cmd_channel.c -o uart_cmd_channel.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+"d:/JM66x/Firmware/Sam662_120713/include/ftl.h", line 50: Warning:  #47-D: incompatible redefinition of macro "COPY_BACK_ENABLE" (declared at line 266 of "d:/JM66x/Firmware/Sam662_120713/include/global.h")
+  #define			COPY_BACK_ENABLE		0
+         			^
+uart_cmd_channel.c: 1 warning, 0 errors
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include -DPROG_ROOT_PATH=\"/d/JM66x/Firmware/Sam662_120713\" -DUSER_NAME=\"fred_wei\" --bss_threshold=0 -c --littleend --cpu=ARM968E-S sata_vendor_cmd.c -o sata_vendor_cmd.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include -DPROG_ROOT_PATH=\"/d/JM66x/Firmware/Sam662_120713\" -DUSER_NAME=\"fred_wei\" --bss_threshold=0 -c --littleend --cpu=ARM968E-S svcl.c -o svcl.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include -DPROG_ROOT_PATH=\"/d/JM66x/Firmware/Sam662_120713\" -DUSER_NAME=\"fred_wei\" --bss_threshold=0 -c --littleend --cpu=ARM968E-S ftl1.c -o ftl1.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+"d:/JM66x/Firmware/Sam662_120713/include/ftl.h", line 50: Warning:  #47-D: incompatible redefinition of macro "COPY_BACK_ENABLE" (declared at line 266 of "d:/JM66x/Firmware/Sam662_120713/include/global.h")
+  #define			COPY_BACK_ENABLE		0
+         			^
+"ftl1.c", line 6207: Warning:  #177-D: variable "bCh" was declared but never referenced
+  	byte			bCh, bBank, bActiveBank;
+  	    			^
+ftl1.c: 2 warnings, 0 errors
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include -DPROG_ROOT_PATH=\"/d/JM66x/Firmware/Sam662_120713\" -DUSER_NAME=\"fred_wei\" --bss_threshold=0 -c --littleend --cpu=ARM968E-S ftl_access.c -o ftl_access.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+"d:/JM66x/Firmware/Sam662_120713/include/ftl.h", line 50: Warning:  #47-D: incompatible redefinition of macro "COPY_BACK_ENABLE" (declared at line 266 of "d:/JM66x/Firmware/Sam662_120713/include/global.h")
+  #define			COPY_BACK_ENABLE		0
+         			^
+ftl_access.c: 1 warning, 0 errors
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include -DPROG_ROOT_PATH=\"/d/JM66x/Firmware/Sam662_120713\" -DUSER_NAME=\"fred_wei\" --bss_threshold=0 -c --littleend --cpu=ARM968E-S ftl_wbm.c -o ftl_wbm.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+"d:/JM66x/Firmware/Sam662_120713/include/ftl.h", line 50: Warning:  #47-D: incompatible redefinition of macro "COPY_BACK_ENABLE" (declared at line 266 of "d:/JM66x/Firmware/Sam662_120713/include/global.h")
+  #define			COPY_BACK_ENABLE		0
+         			^
+ftl_wbm.c: 1 warning, 0 errors
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include -DPROG_ROOT_PATH=\"/d/JM66x/Firmware/Sam662_120713\" -DUSER_NAME=\"fred_wei\" --bss_threshold=0 -c --littleend --cpu=ARM968E-S dpd.c -o dpd.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+"dpd.c", line 253: Warning:  #223-D: function "UARTprintf" declared implicitly
+  	UARTprintf("bFlashInterface:%d bDramNum:%d\r", pFTLParam->bFlashInterface, pFTLParam->bDramNum);
+  	^
+dpd.c: 1 warning, 0 errors
+armcc   -I./ -I/d/JM66x/Firmware/Sam662_120713/include -DPROG_ROOT_PATH=\"/d/JM66x/Firmware/Sam662_120713\" -DUSER_NAME=\"fred_wei\" --bss_threshold=0 -c --littleend --cpu=ARM968E-S dram_init.c -o dram_init.o  -Ospace -O2 --apcs interwork -DMAKE_RELEASE=0
+examine driver.a
+examine rvct.a
+ necessary to replace the dependency
+ necessary to replace the dependency
+ necessary to replace the dependency
+armlink --map --info totals --debug --userlibpath /d/JM66x/Firmware/Sam662_120713/lib 	--entry 0	\
+				--scatter rvctScatter	\
+				--list SYS_S.list	\
+				--output SYS_S.axf		\
+				--list_mapping_symbols	\
+				--symdefs SYS_S.symbol	\
+				--info libraries	\
+				main.o bget.o sysCPU_a.o rvctVectors.o rvctRstHdlr.o rvctSubMain.o ver_sata.o ldr_block.o uart_cmd_channel.o sata_vendor_cmd.o svcl.o ftl1.o ftl_access.o ftl_wbm.o dpd.o dram_init.o			\
+				driver.a rvct.a
+fromelf --bin --output SYS_S.bin SYS_S.axf
+SUM.exe SYS_S.bin
+make[2]: Leaving directory `/d/JM66x/Firmware/Sam662_120713/bin/sys'
+make[1]: Leaving directory `/d/JM66x/Firmware/Sam662_120713/bin'

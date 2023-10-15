@@ -1,0 +1,41 @@
+
+VER = 40
+
+all :
+	- rm -rf bin/sys/{*.bin,*.axf,*.list,*.symbol}
+	#PlaneB_BH
+	#make onesys CONFIGURE=SYS_LISB V=$(VER) BW=L BX=I BY=S BZ=B            
+	#make onesys CONFIGURE=SYS_LIS? V=$(VER) BW=L BX=I BY=S BZ=? #4Ch 32GB ???  
+	#make onesys CONFIGURE=SYS_LISE V=$(VER) BW=L BX=I BY=S BZ=E #4ch 64GB      
+	#make onesys CONFIGURE=SYS_LISF V=$(VER) BW=L BX=I BY=S BZ=F  #4ch 128GB    
+	# 
+	make onesys CONFIGURE=SYS_S V=$(VER) BW=L BX=T BY=H BZ=A
+	#make onesys CONFIGURE=SYS_LTHB V=$(VER) BW=L BX=T BY=H BZ=B
+	#make onesys CONFIGURE=SYS_LTHC V=$(VER) BW=L BX=T BY=H BZ=C   
+	#make onesys CONFIGURE=SYS_LTHE V=$(VER) BW=L BX=T BY=H BZ=E #4ch 32GB
+	#make onesys CONFIGURE=SYS_LTHF V=$(VER) BW=L BX=T BY=H BZ=F #4ch 64GB	
+	#make onesys CONFIGURE=SYS_LTHG V=$(VER) BW=L BX=T BY=H BZ=G #4ch 128GB 
+	#
+	#make onesys CONFIGURE=SYS_ORHC V=$(VER) BW=O BX=R BY=H BZ=C
+	#make onesys CONFIGURE=SYS_ORHE V=$(VER) BW=O BX=R BY=H BZ=E #4ch 32GB      
+	#make onesys CONFIGURE=SYS_ORHF V=$(VER) BW=O BX=R BY=H BZ=F  #4ch 64GB      
+	#make onesys CONFIGURE=SYS_ORHG V=$(VER) BW=O BX=R BY=H BZ=G  #4ch 128GB     
+	#
+	#make onesys CONFIGURE=SYS_TTHA V=$(VER) BW=T BX=T BY=H BZ=A
+	#make onesys CONFIGURE=SYS_TTHB V=$(VER) BW=T BX=T BY=H BZ=B
+	#make onesys CONFIGURE=SYS_TTHC V=$(VER) BW=T BX=T BY=H BZ=C
+	#make onesys CONFIGURE=SYS_TTHE V=$(VER) BW=T BX=T BY=H BZ=E #4ch 32GB
+	#make onesys CONFIGURE=SYS_TTHF V=$(VER) BW=T BX=T BY=H BZ=F #4ch 64GB
+	#make onesys CONFIGURE=SYS_TTHG V=$(VER) BW=T BX=T BY=H BZ=G #4ch 128GB
+	#make onesys CONFIGURE=SYS_TTHH V=$(VER) BW=T BX=T BY=H BZ=H
+	#make onesys CONFIGURE=SYS_TTZA V=$(VER) BW=T BX=T BY=Z BZ=A
+	#make onesys CONFIGURE=SYS_TTZB V=$(VER) BW=T BX=T BY=Z BZ=B
+	#make onesys CONFIGURE=SYS_TTZC V=$(VER) BW=T BX=T BY=Z BZ=C	
+	#make onesys CONFIGURE=SYS_TTZE V=$(VER) BW=T BX=T BY=Z BZ=E
+	#make onesys CONFIGURE=SYS_TTZF V=$(VER) BW=T BX=T BY=Z BZ=F
+	#make onesys CONFIGURE=SYS_TTZG V=$(VER) BW=T BX=T BY=Z BZ=G
+	#make onesys CONFIGURE=SYS_TTZH V=$(VER) BW=T BX=T BY=Z BZ=H
+  
+
+
+

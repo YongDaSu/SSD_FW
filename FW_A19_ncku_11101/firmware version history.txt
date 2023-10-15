@@ -1,0 +1,28 @@
+130730: Base On 130726(Fred)
+	Support SPI FLASH	
+
+130816: Add Uart Command "LTB" print Later Bad Information.	
+	Destroy Function add SPI Flash Erase
+	Update sram.bin for MPTool (Fix safeErase & EraseAll Function)	
+
+130827: Fix Power Cycle Issue
+
+130912: for SLC Tune DriverStrength & ODT
+        Fix adjust DriverStrength & ODTValue Speed slowdown
+	Fix BurnIn Test two partition 1% Data verify & Copy File Data compare Error
+
+131007: Fix LaterBad error handler
+	Add Get MPTool Data(JMMPTOOL.ini) command 0x35
+
+140211$:Add Type B Flash
+	Add Vendor Command ATA_CMD_SECURITY_CLEAR_FREEZE_LOCK for iSMART tool ATA SECURITY Function
+	Add judge ThermalSensorID 74
+	Add high and low temperature spin-down ( temperature<2 || temperature>70)
+	Add EARLY TABLE BLOCK 2 & BLOCK 4 (decrease MP too many Bad Block question) 
+	Add high and low temperature don't care Erase & Write Later Bad
+	Add Erase & Write Later Bad can't over 20 
+	Add Read/Write Shift retry Count 2 ( when Shift retry Count > 2 Marked Block Later Bad )
+	Add Security Erase Count ( For Check MP Finished with or without do security erase)
+	Uniform format Bad Block Info For iSMART Tool
+	DQSI_DLY 8CE CH3 set 5
+	Fix GPIO QE & SE can't correct start 	

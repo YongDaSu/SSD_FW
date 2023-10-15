@@ -1,0 +1,1 @@
+copy .\bin\sys\SYS_S.bin .\SYS_OIHF.bin

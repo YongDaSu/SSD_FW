@@ -1,0 +1,6 @@
+cls
+make clean
+::read
+make cleandep
+::read
+make
