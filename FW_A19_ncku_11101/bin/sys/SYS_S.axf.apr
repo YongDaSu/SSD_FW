@@ -1,0 +1,13 @@
+# Auto-Project file created by RVDEBUG. Do not hand edit unless
+# you know what you are doing. Use the Settings Window
+# Copyright (c) 2002 - ARM Ltd
+$make_prj
+[PROJECT] 
+source_search="C:\msys\1.0\home\jasperliu\firmware\jmf66x\jmf668ar1_0119\drive"
+source_mapping="C:\
+	\msys\1.0\home\jasperliu\firmware\jmf66x\jmf668ar1_0119\bin\sys->C:\
+	\msys\1.0\home\jasperliu\firmware\jmf66x\jmf668ar1_0119\drive"
+[MAKEFILE=default] 
+application="SYS_S.axf"
+arguments="This project does not build anything"
+command="@echo $a"

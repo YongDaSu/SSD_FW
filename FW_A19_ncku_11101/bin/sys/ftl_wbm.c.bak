@@ -1,0 +1,200 @@
+// ****************************************************************************
+// ****************************************************************************
+// **
+// ** MODULE:      $RCSfile: FTL_WBM.C $
+// **
+// ** VERSION:     $Revision: 1.0 $
+// **
+// ** AUTHOR:
+// **
+// ** DESCRIPTION: Write Buffer Manager
+// **
+// ****************************************************************************
+// *
+// *
+// *
+// ****************************************************************************/
+
+#include <global.h>
+#include <defreg.h>
+#include <uart.h>
+#include <ata.h>
+#include <nand_sys.h>
+#include <ftl.h>
+
+dword 			gpPRDTable[10];
+byte			gSADMA_Start;
+word			gStartTime;
+dword			dwATA_SectorCount;
+
+
+// **************************************************************
+// * 
+// **************************************************************
+void _NOP(void)
+{
+	__asm
+	{
+		nop
+		nop
+		nop
+	}
+}
+
+
+// **************************************************************
+// * 
+// **************************************************************
+void vADMA_EnableADMA(byte XferDir, word bBufSel)
+{
+	if(XferDir == BUF_TO_SATA)
+	{
+		// Enable SDMA
+		if(gSADMA_Start == 0)
+		{
+			vADMA_WaitDMADone();
+			
+			rF_ADMA_MASK = ADMA_FDMA_MASK;
+			rF_ADMA_FLAG = (bSECTOR_SHIFT - 2) | ((bSECTOR_SHIFT - 2) << 2) | ((CHANNEL_NUM - 1) << 4); //stop/back =16K
+			//rF_ADMA_FLAG = (bSECTOR_SHIFT - 3) | ((bSECTOR_SHIFT - 3) << 2) | ((CHANNEL_NUM - 1) << 4); //stop/back =16K
+			
+			// Set TXfer length
+			rF_ADMAS = dwATA_SectorCount << 9;	// x 512
+			rF_ABP = bBufSel << 9;
+			
+			gpPRDTable[0] = FLASH_MEM_BASE;
+			gpPRDTable[1] = 0x80000000 | (dwATA_SectorCount << 9);
+			
+			//rF_ADMA_CTL = ADMA_CTL_EN | ADMA_OVERLAP_EN | ADMA_ONE_DMA | ADMA_MAP_CHK | ADMA_ASR_CHG;
+			rF_ADMA_CTL = ADMA_CTL_EN | ADMA_OVERLAP_EN | ADMA_ONE_DMA;
+			
+			ata_start_dmaio_cmd((unsigned int) gpPRDTable, 0);
+			
+			gSADMA_Start = 1;
+		}
+		else
+		{
+			vADMA_WaitDMAFlagDone();
+			
+			//re-turn ADMA(set ADMA flag)
+			rF_ADMA_FLAG |= ADMA_CTL_FLAG;
+		}
+	}
+	else
+	{
+		// Enable SDMA
+		if(gSADMA_Start == 0)
+		{
+			vADMA_WaitDMADone();
+			
+			rF_ADMA_MASK = ADMA_FDMA_MASK;
+			rF_ADMA_FLAG = (bSECTOR_SHIFT - 2) | ((bSECTOR_SHIFT - 2) << 2) | ((CHANNEL_NUM - 1) << 4); //stop/back =16K
+			//rF_ADMA_FLAG = (bSECTOR_SHIFT - 3) | ((bSECTOR_SHIFT - 3) << 2) | ((CHANNEL_NUM - 1) << 4); //stop/back =16K
+			
+			// Set TXfer length
+			rF_ADMAS = dwATA_SectorCount << 9;	// x 512
+			rF_ABP = bBufSel << 9;
+			
+			gpPRDTable[0] = FLASH_MEM_BASE;
+			gpPRDTable[1] = 0x80000000 | (dwATA_SectorCount << 9);
+			
+			// Start ADMA
+			rF_ADMA_CTL = ADMA_CTL_EN | ADMA_CTL_S2B | ADMA_OVERLAP_EN | ADMA_ONE_DMA;
+			
+			// Start SDMA
+			ata_start_dmaio_cmd((unsigned int) gpPRDTable, 0);
+
+			gSADMA_Start = 1;
+			
+			vADMA_WaitDMAFlagDone();
+		}
+		else
+		{
+			//re-turn ADMA(set ADMA flag)
+			rF_ADMA_FLAG |= ADMA_CTL_FLAG;
+			
+			vADMA_WaitDMAFlagDone();
+		}
+	}
+}
+
+// **************************************************************
+// * 
+// **************************************************************
+void vADMA_WaitDMADone(void)
+{
+	
+}
+
+
+// **************************************************************
+// * 
+// **************************************************************
+void vADMA_WaitDMAFlagDone(void)
+{
+	if(gSADMA_Start == 0)
+		return;
+	
+	while(rF_ADMA_FLAG & ADMA_CTL_FLAG)
+	{
+	}
+}
+
+// **************************************************************
+// * 
+// **************************************************************
+PUBLIC byte bWBM_DMARead(dword nSSect, dword nSectCnt)
+{
+
+	gSADMA_Start = 0;
+	dwATA_SectorCount = nSectCnt;
+	
+	bFTL_DMARead(nSSect, nSectCnt);
+	
+	while (!(ata_poll_dmaio_cmd_status(0) & ATA_DMAIO_CMD_STS_DONE))
+	{
+		
+	}
+	
+	return 0;
+}
+
+// **************************************************************
+// * 
+// **************************************************************
+PUBLIC byte bWBM_DMAWrite(dword nSSect, dword nSectCnt)
+{
+	byte	bStatus;
+	
+	gSADMA_Start = 0;
+	dwATA_SectorCount = nSectCnt;
+	
+	bStatus = bFTL_DMAWrite(nSSect, nSectCnt);
+	
+	while (!(ata_poll_dmaio_cmd_status((bool_T)bStatus) & ATA_DMAIO_CMD_STS_DONE))
+	{
+		
+	}
+	
+	return 0;
+}
+
+
+// **************************************************************
+// * 
+// **************************************************************
+PUBLIC byte bWBM_PIORead(dword nSSect, dword nSectCnt)
+{
+	return 0;
+}
+
+
+// **************************************************************
+// * 
+// **************************************************************
+PUBLIC byte bWBM_PIOWrite(dword dwStartLBA, dword dwSectorCount)
+{
+	return 0;
+}
+
+

@@ -1,0 +1,33 @@
+
+RAM_LOAD 0x0
+{
+	CODE_SRAM +0 
+	{
+		rvctVectors.o (Vect, +First)
+		* (+RO-CODE)
+		* (+RO-DATA)
+	}
+
+	DATA +0
+	{
+		* (+RW,+ZI)
+	}
+
+	HEAP +0 UNINIT
+	{
+		rvctHeap.o (+ZI)
+	}
+
+	STACKS 0x30000 UNINIT
+	{
+		rvctStack.o (+ZI)
+	}
+
+;	CODE_DATA_DRAM +0 
+;	{
+;		uart.o (+RO-CODE)
+;		uart_cmd_channel.o (+RO-CODE,+RO-DATA,+RW,+ZI)
+;		gpio.o (+RO-CODE,+RO-DATA,+RW,+ZI)
+;	}
+}
+

@@ -1,0 +1,197 @@
+	#define _2BS(c1,c2)	(c1<<8) + c2
+
+	EXPORT	SATA_IDENTIFY_DEVICE_WORD0
+	EXPORT	SATA_IDENTIFY_DEVICE_WORDn
+
+SATA_IDENTIFY_DEVICE_WORD0
+	DCW	0x0040				;00		General configuration bit-significant information
+	DCW	0x0000				;01		Number of logical cylinders
+	DCW	0xC837				;02		Specific configuration
+	DCW	0x0000				;03		Number of logical heads
+	DCW	0x0000				;04-05	Retired
+	DCW	0x0000				;
+	DCW	0x0000				;06		Number of logical sectors per logical track
+	DCW	0x0000				;07-08	Reserved for assignment by the CompactFlash Association
+	DCW	0x0000				;
+	DCW	0x0000				;09		Retired
+	DCW	0x3131				;10-19	Serial number (20 ASCII characters)
+	DCW	0x3131				;		111108-ABCABC13122
+	DCW	0x3038				;
+	DCW	0x2D41              ;
+	DCW	0x4243              ;
+	DCW	0x4142				;
+	DCW	0x4331              ;
+	DCW	0x3331              ;
+	DCW	0x3232				;
+	DCW	0x0000              ;
+	DCW	0x0000				;20-21	Retired
+	DCW	0x0000				;
+	DCW	0x0000				;22		Obsolete
+	DCW	('E' <<8) + '1'		;23-26	Firmware revision (8 ASCII characters)
+	DCW	('1' <<8) + '1'		;		E111108a
+	DCW	('1' <<8) + '0'		;
+	DCW	('8' <<8) + 'a'		;
+	DCW	('J' <<8) + 'M'		;27-46	Model number (40 ASCII characters)
+	DCW	('i' <<8) + 'c'		;		JMicron JMF668 SATA SSD Loader Device
+	DCW	('r' <<8) + 'o'		;
+	DCW	('n' <<8) + ' '		;
+	DCW	('J' <<8) + 'M'     ;
+	DCW	('F' <<8) + '6'     ;
+	DCW	('6' <<8) + '8'		;
+	DCW	(' ' <<8) + 'S'     ;
+	DCW	('A' <<8) + 'T'     ;
+	DCW	('A' <<8) + ' '		;
+	DCW	('S' <<8) + 'S'     ;
+	DCW	('D' <<8) + ' '     ;
+	DCW	(' ' <<8) + ' '		;
+	DCW	(' ' <<8) + ' '     ;
+	DCW	(' ' <<8) + ' '     ;
+	DCW	(' ' <<8) + ' '		;
+	DCW	(' ' <<8) + ' '     ;
+	DCW	(' ' <<8) + ' '     ;
+	DCW	(' ' <<8) + ' '		;
+	DCW	(' ' <<8) + ' '		;
+	DCW	0x8000				;47		Maximum number of sectors=1 on READ/WRITE MULTIPLE commands
+	DCW	0x0000				;48		Trusted computing feature set options(ATA-8)
+	DCW	0x2F00				;49		Capabilities
+	DCW	0x4000				;50		Capabilities
+	DCW	0x0000				;51-52	Obsolete
+	DCW	0x0000				;
+	DCW	0x0007				;53		Field validity
+	DCW	0x0000				;54-56
+	DCW	0x0000				;
+	DCW	0x0000				;
+	DCW	0x0000				;57-58	Current capacity in sectors
+	DCW	0x0000				;
+	DCW	0x0000				;59		Multiple Sector Setting (bit 0-7: V)
+	DCW	0x0000				;60-61	Total number of user addressable sectors
+	DCW	0x0000				;
+	DCW	0x0000				;62		Obsolete
+	DCW	0x0207				;63		Multiword DMA mode 2 support, def : MDMA 2
+	DCW	0x0003				;64		PIO modes supported (support PIO mode 4)
+	DCW	0x0078				;65		Minimum Multiword DMA transfer cycle time per word
+	DCW	0x0078				;66		Manufacture's recommended Multiword transfer cycle time
+	DCW	0x0078				;67		Minimum PIO transfer cycle time without flow control
+	DCW	0x0078				;68		Minimum PIO transfer cycle time with IORDY flow control
+	DCW	0x0000				;69-70	Reserved (for future command overlap and queuing)
+	DCW	0x0000				;
+	DCW	0x0000				;71-74	Reserved for the IDENTIFY PACKET DEVICE command
+	DCW	0x0000				;
+	DCW	0x0000				;
+	DCW	0x0000				;
+	DCW	0x0000				;75		Queue depth
+	DCW	0x040E				;76		Serial ATA capabilities 6G  0406: 3.0G, 0x0402 : 1.5G
+	DCW	0x0000				;77		Reserved for future Serial ATA definition
+	DCW	0x0000				;78		Serial ATA features supported
+	DCW	0x0000				;79		Serial ATA features enabled
+	DCW	0x03F8				;80		Major version number (support ATA-8)
+	DCW	0x0000				;81		Minor version number
+	DCW	0x3068				;82		Command set supported
+	DCW	0x5809				;83		Command sets supported
+	DCW	0x4020				;84		Command set/feature supported extension
+	DCW	0x3008				;85		Command set/feature enabled
+	DCW	0x9801				;86		Command set/feature enabled
+	DCW	0x4020				;87		Command set/feature default
+	DCW	0x003F				;88		Ultra DMA mode 5 support, def : MDMA 2
+	DCW	0x0000				;89		Time required for security erase unit completion
+	DCW	0x0000				;90		Time required for Enhanced security erase completion
+	DCW	0x0000				;91		Current advanced power management value
+	DCW	0x0000				;92		Master Password Revision Code
+	DCW	0x0000				;93		COMRESET result
+	DCW	0x0000				;94		Acoustic management value
+	DCW	0x0000				;95		Stream Minimum Request Size
+	DCW	0x0000				;96		Stream Transfer Time - DMA
+	DCW	0x0000				;97		Stream Access Latency - DMA and PIO
+	DCW	0x0000				;98-99	Stream Performance Granularity
+	DCW	0x0000				;
+	DCW	0x0000				;100-103 Maximum user LBA for 48-bit Address feature set
+	DCW	0x0000				;
+	DCW	0x0000				;
+	DCW	0x0000				;
+	DCW	0x0000				;104	Stream Transfer Time - PIO
+	DCW	0x0000				;105	Reserved
+	DCW	0x4000				;106	Physical sector size/Logical Sector Size
+	DCW	0x0000				;107	Inter-seek delay for ISO-7779 acoustic testing in microseconds
+	DCW	0x5001				;108	NAA/IEEE OUI
+	DCW	0xB8C0				;109	IEEE OUI/Unique ID
+	DCW	0x0000				;110-111 Unique ID
+	DCW	0x0000				;
+	DCW	0x0000				;112-115 Reserved for world wide name extension to 128 bits
+	DCW	0x0000				;
+	DCW	0x0000              ;
+	DCW	0x0000              ;
+	DCW	0x0000				;116	Reserved for technical report
+	DCW	0x0000				;117-118 Words per Logical Sector
+	DCW	0x0000				;
+	DCW	0x4000				;119	Command set/feature supported (continued from word 84:82)
+	DCW	0x4000				;120	Command set/feature supported (continued from word 84:82)
+	DCW	0x0000				;121-126 Reserved
+	DCW	0x0000				;
+	DCW	0x0000              ;
+	DCW	0x0000              ;
+	DCW	0x0000				;
+	DCW	0x0000              ;
+	DCW	0x0000				;127	Removable Media Status Notification feature set support
+	DCW	0x0000				;128	Security status, run time set value
+	DCW 0x0000				;129	Specific Vendor Words
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+	DCW 0x0000
+SATA_IDENTIFY_DEVICE_WORDn
+	DCW 0x0000				;159
+
+
+	EXPORT	DCO_IDENTIFY_INFO_WORD0
+	EXPORT	DCO_IDENTIFY_INFO_WORDn
+	
+DCO_IDENTIFY_INFO_WORD0
+	DCW 0x0002				;00		Data Structure revision
+	DCW 0x0007				;01		Multiword DMA modes supported
+	DCW 0x007F				;02		Ultra DMA modes supported
+	DCW 0x0000				;03		Maximun LBA0
+	DCW 0x0000				;04		Maximun LBA1
+	DCW 0x0000				;05		Maximun LBA2
+	DCW 0x0000				;06		Maximun LBA3
+	DCW 0x008F				;07		Command set/feature set supported part 1
+	DCW 0x0000				;08		Serial ATA Command set/feature set supported
+	DCW 0x0000				;09		Reserved for Serial ATA
+	DCW 0x0000				;10-20	Reserved
+	DCW 0x0000				;
+	DCW 0x0000				;
+	DCW 0x0000				;
+	DCW 0x0000				;
+	DCW 0x0000				;
+	DCW 0x0000				;
+	DCW 0x0000				;
+	DCW 0x0000				;
+	DCW 0x0000				;
+	DCW 0x0000				;
+	DCW 0x0000				;21		Command set/feature set supported part 2
+DCO_IDENTIFY_INFO_WORDn	
+	DCW 0x0000				;22		Command set/feature set supported part 3
