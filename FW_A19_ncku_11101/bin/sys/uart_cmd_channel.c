@@ -471,6 +471,13 @@ void process_uart_cmd_channel(UINT8 bFlag)
 		UARTputs("end>\r\r");
 
  	}
+	else if (strncmp(xyz, "info", 4) == 0)
+ 	{
+		UARTprintf(" YongDa Su \n");
+		UARTprintf(" N96114603 \n");
+		UARTputs("end>\r\r");
+
+ 	}
  	else
 	{
 		if(bFlag == 0)
