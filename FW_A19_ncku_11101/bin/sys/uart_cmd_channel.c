@@ -407,6 +407,7 @@ void process_uart_cmd_channel(UINT8 bFlag)
         word wBlkNo;
         dword dwPATTERN;
      	dword *pSRamBuffer;
+		int bytesWritten;
 
  	    pSRamBuffer = (dword *)(FLASH_MEM_BASE);
 
@@ -421,9 +422,12 @@ void process_uart_cmd_channel(UINT8 bFlag)
 		UARTprintf(" Write dwBlock %d(0x%04Xh)\r", wBlkNo, wBlkNo);
     	    	
     	// Set Buffer
-    	memset((byte *)(FLASH_MEM_BASE), bPATTERN, 128);
-        pSRamBuffer[0] = 0;
-
+		for (bytesWritten = 0; bytesWritten < 4096; bytesWritten += 4)
+    	{
+        	memset((byte *)(pSRamBuffer + bytesWritten / 4), bPATTERN, 4);
+    	}
+		pSRamBuffer[0] = 0;
+        
         for( wPageNo = 0 ; wPageNo <= 255 ; wPageNo++ )
         {
 		    UARTprintf(" dwPage %d(0x%04Xh)\r", wPageNo, wPageNo);
@@ -448,6 +452,7 @@ void process_uart_cmd_channel(UINT8 bFlag)
         byte bPageNo;
         word wBlkNo;
      	dword *pSRamBuffer;
+		int bytesRead;
 
  	    pSRamBuffer = (dword *)(FLASH_MEM_BASE);
 
@@ -455,21 +460,21 @@ void process_uart_cmd_channel(UINT8 bFlag)
         wBlkNo = dwStrToHexval2((byte*)&xyz[bIdx], &bCnt);
 	    wBlkNo &= 0x0000FFFF;
 
-        bIdx += bCnt;
+		
+		bIdx += bCnt;
         bPageNo = dwStrToHexval2((byte*)&xyz[bIdx], &bCnt);
 	    bPageNo &= 0x0000FFFF;
 
 		UARTprintf(" Read dwBlock %d(0x%04Xh)\r", wBlkNo, wBlkNo);
 		UARTprintf(" Read dwPage %d(0x%04Xh)\r", bPageNo, bPageNo);
 
-        // Read data
-        vFTL_PageRead(bPageNo, wBlkNo);
-
-        UARTprintf(" UART dump SRAM Buf after Read data\n");
-        UARTprintf(" UART pBuf[0] 0x %08X %08X %08X %08X\n", pSRamBuffer[0], pSRamBuffer[1], pSRamBuffer[2], pSRamBuffer[3]);
-        UARTprintf(" UART pBuf[4] 0x %08X %08X %08X %08X\n", pSRamBuffer[4], pSRamBuffer[5], pSRamBuffer[6], pSRamBuffer[7]);
+		vFTL_PageRead(bPageNo, wBlkNo);
+		for (bytesRead = 0; bytesRead < 1024; bytesRead++)
+		{
+			UARTprintf("pBuf[%d] 0x%08X\n",bytesRead, pSRamBuffer[bytesRead]);
+		}
 		UARTputs("end>\r\r");
-
+		
  	}
 	else if (strncmp(xyz, "info", 4) == 0)
  	{
