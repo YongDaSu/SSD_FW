@@ -25,5 +25,5 @@ The homework should be a CLI application and contains the following features:
 --lba + %d: to specify starting logical block address to perform operation on SSD.
 --sector_cnt + %d: the data length from starting logical block address to end.
 --data + %x: set the pattern to be write into SSD (e.g., --data FF will write FF into SSD from start to end for the length of sector_cnt)
-* Usage : scsi.exe --disk 2 --write --lba 10 --sector_cnt 32 --data aa
-          scsi.exe --disk 2 --read --lba 9 --sector_cnt 32
+* Write Usage : scsi.exe --disk 2 --write --lba 10 --sector_cnt 32 --data aa
+* Read Usage : scsi.exe --disk 2 --read --lba 9 --sector_cnt 32
