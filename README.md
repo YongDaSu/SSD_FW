@@ -30,4 +30,5 @@ The homework should be a CLI application and contains the following features:
 
 
 The .exe file is in the SSD_Lab02\x64\Debug.
+
 Detail is in this article: https://hackmd.io/@2gMSvG25RxKj2-N_rAY6zg/H15CnpVVT
