@@ -1,0 +1,10 @@
+﻿  scsi.c
+C:\Users\NCLab05\Desktop\SSD_Lab02\SSD_Lab02\SSD_Lab02\scsi.c(323,9): warning C4101: 'i': 未參考的區域變數
+  spti.c
+C:\Users\NCLab05\Desktop\SSD_Lab02\SSD_Lab02\SSD_Lab02\spti.c(112,20): warning C4133: '函式': 不相容的類型 - 從 'CHAR [25]' 至 'STRSAFE_LPWSTR'
+C:\Users\NCLab05\Desktop\SSD_Lab02\SSD_Lab02\SSD_Lab02\spti.c(112,44): warning C4133: '函式': 不相容的類型 - 從 'char [7]' 至 'STRSAFE_LPCWSTR'
+C:\Users\NCLab05\Desktop\SSD_Lab02\SSD_Lab02\SSD_Lab02\spti.c(142,29): warning C4133: '函式': 不相容的類型 - 從 'CHAR [25]' 至 'LPCWSTR'
+C:\Users\NCLab05\Desktop\SSD_Lab02\SSD_Lab02\SSD_Lab02\spti.c(779,9): warning C4133: '函式': 不相容的類型 - 從 'CHAR [80]' 至 'LPWSTR'
+  正在產生程式碼...
+  LINK : 最後的累加連結找不到或未建置 C:\Users\NCLab05\Desktop\SSD_Lab02\SSD_Lab02\x64\Debug\SSD_Lab02.exe，正在執行完整連結
+  SSD_Lab02.vcxproj -> C:\Users\NCLab05\Desktop\SSD_Lab02\SSD_Lab02\x64\Debug\SSD_Lab02.exe
