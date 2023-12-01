@@ -27,3 +27,5 @@ The homework should be a CLI application and contains the following features:
 --data + %x: set the pattern to be write into SSD (e.g., --data FF will write FF into SSD from start to end for the length of sector_cnt)
 * Write Usage : scsi.exe --disk 2 --write --lba 10 --sector_cnt 32 --data aa
 * Read Usage : scsi.exe --disk 2 --read --lba 9 --sector_cnt 32
+The .exe file is in the SSD_Lab02\x64\Debug.
+Detail is in this article: https://hackmd.io/@2gMSvG25RxKj2-N_rAY6zg/H15CnpVVT
