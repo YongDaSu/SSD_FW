@@ -17,7 +17,7 @@ typedef struct SIO_RX_BUFFER
 
 
 extern void UARTinit(void);
-extern void process_uart_cmd_channel(UINT8 bFlag);
+extern void process_uart_cmd_channel(UINT8 bFlag, int* write_signal);
 
 #if (!defined(MAKE_LOADER_ONLY))
 extern void UARTprintf(const char *fmt, ...);
