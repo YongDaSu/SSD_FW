@@ -43,7 +43,8 @@ struct softTimer_S gSysTimer;
 //extern void vFTL_InitDefineValue();
 dword	gdwDRAMAllocSize;
 
-
+//Write protection bit, 0 is write protection disable, 1 is write protection enable.
+bool* write_signal = 0;
 
 extern bool boNAND_Init(int hostif);
 /****************************************************************************************/
@@ -205,7 +206,7 @@ int main(void)
         }
 		
 		if(UARTpollCommandReady())
-			process_uart_cmd_channel(0x01);
+			process_uart_cmd_channel(0x01, write_signal);
 		
 //		if(gbHostWriteIdle)
 		{
@@ -220,9 +221,17 @@ int main(void)
 				//DMA write command
 				if(!pIOInfo->isRead) 
 				{
-				    //UARTprintf("\nTrack Write LBA:%d, SectorCount:%d\n", pIOInfo->nSSect, pIOInfo->nSectCnt);
-					gpioHDDAledBlink(LED_MODE_WRITE);										
-					bWBM_DMAWrite(pIOInfo->nSSect, pIOInfo->nSectCnt);
+					if(*write_signal == 1)
+					{
+						UARTprintf("write proteciton on, can not write data now.\n");
+					}
+					else
+					{
+						//UARTprintf("\nTrack Write LBA:%d, SectorCount:%d\n", pIOInfo->nSSect, pIOInfo->nSectCnt);
+						gpioHDDAledBlink(LED_MODE_WRITE);										
+						bWBM_DMAWrite(pIOInfo->nSSect, pIOInfo->nSectCnt);
+					}
+				    
 				}
 				//DMA read command
 				else
@@ -243,9 +252,17 @@ int main(void)
 				//PIO write command
 				if(!pIOInfo->isRead) 
 				{
-				    //UARTprintf("Track PIO Write LBA:%d, SectorCount:%d\n", pIOInfo->nSSect, pIOInfo->nSectCnt);
-					gpioHDDAledBlink(LED_MODE_WRITE);
-					bWBM_PIOWrite(pIOInfo->nSSect, pIOInfo->nSectCnt);
+					if(*write_signal == 1)
+					{
+						UARTprintf("write proteciton on, can not write data now.\n");
+					}
+					else
+					{
+						//UARTprintf("Track PIO Write LBA:%d, SectorCount:%d\n", pIOInfo->nSSect, pIOInfo->nSectCnt);
+						gpioHDDAledBlink(LED_MODE_WRITE);
+						bWBM_PIOWrite(pIOInfo->nSSect, pIOInfo->nSectCnt);
+					}
+				    
 				}
 				//PIO read command
 				else
