@@ -32,3 +32,12 @@ The homework should be a CLI application and contains the following features:
 The .exe file is in the SSD_Lab02\x64\Debug.
 
 Detail is in this article: https://hackmd.io/@2gMSvG25RxKj2-N_rAY6zg/H15CnpVVT
+
+## Lab03
+
+### Requirement
+Implement a Write Protection (Software-based)
+* Use UART command to Enable or Disable write protection.
+* Use SCSI command to test the function.
+  * If write protection is enable, SCSI command would not able to change the data inside SSD NAND chip.
+ Detail is in this article: https://hackmd.io/K-qnjdTJTKuq7zv6uaUsLw
